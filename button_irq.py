@@ -24,6 +24,14 @@ class Button(object):
     def disable_irq(self, callback=None):
         self.pin.irq(handler=None)
 
+    def reset(self):
+        self.disable_irq()
+        self.count_0 = 0
+        self.count_1 = 0
+        self.count_2 = 0
+        self.count_3 = 0
+        self.enable_irq(self.pin_irq)
+
     def pin_irq(self, pin):
         self.count_3 = self.count_3 + 1
         if self.pin.value() == 0 and self.trig_locks == 0:
