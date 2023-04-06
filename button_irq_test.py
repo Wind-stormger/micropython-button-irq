@@ -3,6 +3,8 @@
 # https://opensource.org/licenses/MIT
 
 # A button counting library based on MicroPython IRQ.
+# This test script will output the IRQ trigger position,
+# so you can see the details of the button bounce.
 # https://github.com/Wind-stormger/micropython-button-irq
 
 import time
