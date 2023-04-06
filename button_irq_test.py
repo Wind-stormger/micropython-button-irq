@@ -1,7 +1,14 @@
+# MIT License (MIT)
+# Copyright (c) 2023 Wind-stormger
+# https://opensource.org/licenses/MIT
+
+# A button counting library based on MicroPython IRQ.
+# https://github.com/Wind-stormger/micropython-button-irq
+
 import time
 from machine import Pin
-# import micropython
-# micropython.alloc_emergency_exception_buf(100)
+import micropython
+micropython.alloc_emergency_exception_buf(100)
 
 
 class Button(object):
@@ -36,26 +43,26 @@ class Button(object):
 
     def pin_irq(self, pin):
         self.count_3 = self.count_3 + 1
-        # print(1)
+        print(1)
         if self.pin.value() == 0 and self.trig_locks == 0:
-            # print(2)
+            print(2)
             self.trig_locks = 1
             self.count_2 = self.count_2 + 1
             self.__trig_timeticks_0 = time.ticks_ms()
         elif self.pin.value() == 1 and self.trig_locks == 1:
-            # print(3)
+            print(3)
             self.__trig_timeticks_1 = time.ticks_diff(
                 time.ticks_ms(), self.__trig_timeticks_0)
             if self.__trig_timeticks_1 >= self.debounce_time:
-                # print(4)
+                print(4)
                 self.trig_locks = 0
                 self.count_0 = self.count_0 + 1
             if self.__trig_timeticks_1 >= self.long_time:
                 self.count_1 = self.count_1 + 1
-        # elif self.pin.value() == 0:
-        #     print(5)
-        # elif self.pin.value() == 1:
-        #     print(6)
+        elif self.pin.value() == 0:
+            print(5)
+        elif self.pin.value() == 1:
+            print(6)
 
     def count(self):
         count = [self.count_0, self.count_1, self.count_2, self.count_3]

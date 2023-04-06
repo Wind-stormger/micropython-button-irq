@@ -1,3 +1,10 @@
+# MIT License (MIT)
+# Copyright (c) 2023 Wind-stormger
+# https://opensource.org/licenses/MIT
+
+# A button counting library based on MicroPython IRQ.
+# https://github.com/Wind-stormger/micropython-button-irq
+
 import time
 from machine import Pin
 
