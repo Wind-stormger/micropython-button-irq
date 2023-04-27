@@ -3,6 +3,19 @@ A button counting library based on MicroPython IRQ.
 
 Having good debounce.
 
+It can be installed from [mip](https://docs.micropython.org/en/latest/reference/packages.html#installing-packages-with-mip) via:
+
+```
+>>> import mip
+>>> mip.install("github:Wind-stormger/micropython-button-irq")
+```
+
+Or from mpremote via
+
+```bash
+mpremote mip install github:Wind-stormger/micropython-button-irq
+```
+
 # Use Cases
 
 ```py
