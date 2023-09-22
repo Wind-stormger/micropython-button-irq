@@ -2,5 +2,5 @@
     "urls": [
       ["button_irq.py", "github:Wind-stormger/micropython-button-irq/button_irq.py"]
     ],
-    "version": "0.2"
+    "version": "0.3"
   }

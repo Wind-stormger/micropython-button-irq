@@ -16,7 +16,10 @@ micropython.alloc_emergency_exception_buf(100)
 class Button(object):
 
     def __init__(self, pin=None, debounce_time=50, long_time=1500):
-        self.pin = pin
+        if isinstance(pin, int):
+            self.pin = Pin(pin, Pin.IN)
+        else:
+            self.pin = pin
         self.debounce_time = debounce_time
         self.long_time = long_time
         self.trig_locks = 0

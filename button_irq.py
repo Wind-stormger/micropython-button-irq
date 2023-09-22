@@ -11,8 +11,11 @@ from machine import Pin
 
 class Button(object):
 
-    def __init__(self, pin=None, debounce_time=50, long_time=1500):
-        self.pin = pin
+    def __init__(self, pin, debounce_time=50, long_time=1500):
+        if isinstance(pin, int):
+            self.pin = Pin(pin, Pin.IN)
+        else:
+            self.pin = pin
         self.debounce_time = debounce_time
         self.long_time = long_time
         self.trig_locks = 0
@@ -20,7 +23,7 @@ class Button(object):
         self.__trig_timeticks_1 = 0
         self.count_0 = 0  # pressed times
         self.count_1 = 0  # long pressed times
-        self.count_2 = 0  # press down times
+        self.count_2 = 0  # pressed down times
         self.count_3 = 0  # triggered times
         self.enable_irq(self.pin_irq)
 
